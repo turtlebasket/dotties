@@ -1,0 +1,14 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+
+# === CUSTOM MODS ===
+alias gayhack='cmatrix | lolcat'
+alias scrotclip='scrot -s ~/foo.png && xclip -i ~/foo.png && rm ~/foo.png'
+alias feh="feh -."

@@ -26,7 +26,7 @@ indicator-green = #859900
 bar-empty=#999999
 
 [bar/topbar]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
 height = 32
 ;offset-x = 0%
@@ -57,9 +57,10 @@ font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=12;1"
 modules-left = i3
 modules-center =  
 ;music player goes in center
-modules-right = xbacklight volume spotify wlan battery date  
+modules-right = xbacklight volume spotify eth wlan battery date  
 
-tray-position = right 
+;tray-position = right 
+tray-position = 
 tray-padding = 1  
 tray-transparent = false
 tray-background = ${colors.background}
@@ -180,10 +181,11 @@ label-offline = NO MUSIC PLAYING
 [module/xbacklight]
 type = internal/xbacklight
 output=eDP-1
-format = <label> <bar>
-label = BL
+; format = <label> <bar>
+format = <label>
+label = BL: %percentage%%
 
-bar-width = 10
+bar-width = 20
 bar-indicator = 
 bar-indicator-foreground = 
 bar-indicator-font = 1
@@ -227,7 +229,7 @@ label-connected = %essid%
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.indicator-red}
 label-disconnected = %ifname% Disconnected
-label-disconnected-foreground = ${colors.indicator-red}
+label-disconnected-foreground = ${colors.alert}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -243,13 +245,13 @@ interval = 3.0
 
 format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
 
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${self.format-connected-underline}
 label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.alert-red
+label-disconnected-foreground = ${colors.alert}
 
 [module/date]
 type = internal/date
@@ -270,8 +272,9 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+# format-volume = <label-volume> <bar-volume>
+format-volume = <label-volume>
+label-volume = VOL: %percentage%%
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
@@ -301,14 +304,15 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
+;format-charging= <format-charging> <label-charging>
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = ${colors.indicator-green}
 
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = #ffffff 
 
-format-full-prefix = " "
-;format-full-prefix = f240
+format-full-prefix = ""
+;format-full-prefix = " "
 format-full-prefix-foreground = ${colors.indicator-green} 
 format-full-underline = ${colors.indicator-green}
 
@@ -319,6 +323,9 @@ ramp-capacity-2=
 ;ramp-capacity-1 = 
 ;ramp-capacity-2 = 
 ramp-capacity-foreground = 
+
+; CUSTOM CHARGING THING
+; format-charging = 
 
 animation-charging-0 = 
 animation-charging-1 = 
