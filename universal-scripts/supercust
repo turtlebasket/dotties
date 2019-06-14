@@ -1,0 +1,1 @@
+nitrogen --set-zoom-fill $1 > /dev/null && wal -i $1 > /dev/null && rm ~/.Xresources && xrdb -query >> ~/.Xresources
