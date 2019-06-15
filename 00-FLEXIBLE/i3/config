@@ -162,8 +162,8 @@ set_from_resource $color9 i3wm.color9 #000000
 
 # class                 border  bground text    indicator
 client.focused          $color2 $color2 $color7 $color8  
-client.focused_inactive $color2 $color5 $color7
-client.unfocused        $color1 $color5 $color7
+client.focused_inactive $color5 $color5 $color7
+client.unfocused        $color5 $color5 $color7
 client.urgent           $color4 $color4 $color7
 
 title_align center
