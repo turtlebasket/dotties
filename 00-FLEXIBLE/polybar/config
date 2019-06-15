@@ -13,7 +13,7 @@
 
 [colors]
 background = ${xrdb:color0}
-background-alt=${xrdb:color5}
+background-alt=${xrdb:color2}
 foreground = ${xrdb:color7}
 foreground-alt = ${xrdb:color3}
 alert = ${xrdb:color5}
@@ -291,6 +291,33 @@ bar-volume-empty-foreground = ${colors.bar-empty}
 [module/battery]
 type = internal/battery
 battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${colors.foreground}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = #ffffff 
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.indicator-green} 
+format-full-underline = ${colors.}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = 
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.indicator-green} 
+animation-charging-framerate = 750
+
+[module/battery2]
+type = internal/battery
+battery = BAT1
 adapter = AC
 full-at = 98
 

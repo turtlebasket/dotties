@@ -161,9 +161,9 @@ set_from_resource $color8 i3wm.color8 #000000
 set_from_resource $color9 i3wm.color9 #000000
 
 # class                 border  bground text    indicator
-client.focused          $color2 $color5 $color7 $color8  
-client.focused_inactive $color2 $color2 $color7
-client.unfocused        $color1 $color2 $color7
+client.focused          $color2 $color2 $color7 $color8  
+client.focused_inactive $color2 $color5 $color7
+client.unfocused        $color1 $color5 $color7
 client.urgent           $color4 $color4 $color7
 
 title_align center
@@ -193,8 +193,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightlight -i 70 # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightlight -d 70 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
