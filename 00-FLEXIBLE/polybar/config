@@ -26,7 +26,7 @@ height = 20
 ;offset-x = 0%
 ;offset-y = 0%
 ;radius = 6.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -49,9 +49,9 @@ font-1 = "Siji:style=Regular:pixelsize=12;0"
 font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=10;1" 
 
 modules-left = i3
-modules-center =  
+modules-center = spotify
 ;music player goes in center
-modules-right = xbacklight volume wlan battery date  
+modules-right = volume memory wlan battery date  
 
 tray-position = right 
 tray-padding = 1  
@@ -211,7 +211,7 @@ label = MEM: %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = wlp6s0
+interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
@@ -219,9 +219,9 @@ format-connected-underline = #ffffff
 label-connected = %essid%
 
 format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.indicator-red}
+format-disconnected-underline = ${colors.alert}
 label-disconnected = %ifname% Disconnected
-label-disconnected-foreground = ${colors.indicator-red}
+label-disconnected-foreground = ${colors.alert}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -302,46 +302,24 @@ format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline = #ffffff 
 
 format-full-prefix = " "
-format-full-prefix-foreground = ${colors.indicator-green} 
-format-full-underline = ${colors.}
+format-full-prefix-foreground = ${colors.foreground-alt} 
+;format-full-underline = ${colors.}
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
 ramp-capacity-2 = 
-ramp-capacity-foreground = 
+ramp-capacity-foreground = ${colors.foreground-alt}
 
 animation-charging-0 = 
 animation-charging-1 = 
 animation-charging-2 = 
-animation-charging-foreground = ${colors.indicator-green} 
+animation-charging-foreground = ${colors.foreground-alt} 
 animation-charging-framerate = 750
 
 [module/battery2]
 type = internal/battery
-battery = BAT1
-adapter = AC
-full-at = 98
+battery=BAT1
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = ${colors.foreground}
-
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = #ffffff 
-
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.indicator-green} 
-format-full-underline = ${colors.}
-
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = 
-
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.indicator-green} 
-animation-charging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -420,5 +398,5 @@ type = custom/script
 interval = 1
 format-prefix = " "
 format = <label>
-exec = python ~/.spotify_status.py
-format-underline = #ffffff
+exec = python3 ~/.spotify_status.py
+;format-underline = #ffffff
