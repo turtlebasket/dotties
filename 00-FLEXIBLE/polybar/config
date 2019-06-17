@@ -397,6 +397,7 @@ margin-bottom = 5
 type = custom/script
 interval = 1
 format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
 exec = python3 ~/.spotify_status.py
 ;format-underline = #ffffff
