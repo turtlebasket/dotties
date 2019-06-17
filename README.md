@@ -2,5 +2,15 @@ my-ricing
 =========
 This is a repository for my personal rices that I'd like to keep and possibly use again across machines. Feel free to take a look at and/or use anything from here!  
 
-<img src="SimpleSolarizedDemo.png" width=800/>
+Flexible
+--------
+<img src="DynamicDemo1.png" width=800/>
+<img src="DynamicDemo2.png" width=800/>
+
+Bare Bones
+-----------
 <img src="BareBonesDemo.png" width=800/>
+
+Simple Solarized
+----------------
+<img src="SimpleSolarizedDemo.png" width=800/>
