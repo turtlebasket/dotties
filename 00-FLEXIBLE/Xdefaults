@@ -1,0 +1,5 @@
+URxvt.font: xft:monospace:size=10
+URxvt.letterSpace: -1
+URxvt.keysym.Shift-Control-V: perl:clipboard:paste
+URxvt.scrollBar: false
+URxvt.internalBorder:  22
