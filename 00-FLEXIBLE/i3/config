@@ -201,7 +201,9 @@ bindsym XF86AudioPrev exec playerctl previous
 # APPLICATION LAUNCH BINDINGS
 bindsym $mod+Ctrl+f exec pcmanfm &
 bindsym $mod+Ctrl+w exec firefox &
-bindsym $mod+Shift+s exec cd ~/Pictures && scrot &
+bindsym Print --release exec "scrot /tmp/scrotshot.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot.png"
+bindsym Shift+Print exec "scrot /home/$USER/Pictures/screenshot-$(date +%F_%T).png"
+bindsym $mod+Shift+s --release exec "scrot -s /tmp/scrotshot-SELECT.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot-SELECT.png"
 
 # LOCK BINDING 
 bindsym $mod+Delete exec i3lock && systemctl suspend
