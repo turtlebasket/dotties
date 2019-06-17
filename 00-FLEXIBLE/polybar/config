@@ -13,7 +13,7 @@
 
 [colors]
 background = ${xrdb:color0}
-background-alt=${xrdb:color2}
+background-alt=${xrdb:color5}
 foreground = ${xrdb:color7}
 foreground-alt = ${xrdb:color3}
 alert = ${xrdb:color5}
@@ -269,7 +269,7 @@ label-volume = VOL
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
-format-muted-foreground = #cc0000
+format-muted-foreground = foreground-alt
 label-muted = AUDIO MUTED
 
 bar-volume-width = 21
