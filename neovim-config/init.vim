@@ -21,19 +21,19 @@ call vundle#begin('~/.config/nvim/bundle')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" YouCompleteMe support
+
+" Git line differences
+Plugin 'airblade/vim-gitgutter'
+
+" Autocompletion support
 Plugin 'Valloric/YouCompleteMe'
 
-" Track the engine.
-Plugin 'SirVer/ultisnips'
+" Linting engine
+Plugin 'w0rp/ale'
 
-" Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" map: tab to expand error from ALE
+" doesn't work in Insert mode, so doesn't interfere with YCM
+map <tab> <esc>:ALEDetail<right><CR>
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
