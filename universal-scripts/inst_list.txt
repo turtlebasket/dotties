@@ -1,0 +1,1 @@
+i3-gaps polybar rofi playerctl lxappearance compton nitrogen network-manager-applet urvxt scrot xclip arandr

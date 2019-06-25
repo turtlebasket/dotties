@@ -25,6 +25,10 @@ Plugin 'VundleVim/Vundle.vim'
 " Git line differences
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme='hybrid'
+
 " Autocompletion support
 Plugin 'Valloric/YouCompleteMe'
 
@@ -34,9 +38,6 @@ Plugin 'w0rp/ale'
 " map: tab to expand error from ALE
 " doesn't work in Insert mode, so doesn't interfere with YCM
 map <tab> <esc>:ALEDetail<right><CR>
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 " END PLUGINS
 call vundle#end()

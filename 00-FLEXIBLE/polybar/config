@@ -13,11 +13,12 @@
 
 [colors]
 background = ${xrdb:color0}
-background-alt=${xrdb:color5}
-foreground = ${xrdb:color7}
+background-alt=${xrdb:color4}
+; 5 or 2 for bg
+foreground = ${xrdb:color15}
 foreground-alt = ${xrdb:color3}
 alert = ${xrdb:color5}
-bar-empty=${xrdb:color1}
+bar-empty=${xrdb:color3}
 
 [bar/topbar]
 ;monitor = ${env:MONITOR:HDMI-1}
@@ -51,7 +52,7 @@ font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=10;1"
 modules-left = i3
 modules-center = spotify
 ;music player goes in center
-modules-right = volume memory wlan battery date  
+modules-right = volume memory battery battery2 date  
 
 tray-position = right 
 tray-padding = 1  
@@ -135,7 +136,8 @@ labe-mode-background = #ffffff
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.foreground}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
@@ -272,7 +274,7 @@ format-muted-prefix = " "
 format-muted-foreground = foreground-alt
 label-muted = AUDIO MUTED
 
-bar-volume-width = 21
+bar-volume-width = 11
 bar-volume-foreground-0 = ;actually looks pretty good in just white 
 bar-volume-foreground-1 = 
 bar-volume-foreground-2 = 
@@ -399,5 +401,5 @@ interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
-exec = python3 ~/.spotify_status.py
+exec = python3 ~/.spotify_status.py -t 15
 ;format-underline = #ffffff

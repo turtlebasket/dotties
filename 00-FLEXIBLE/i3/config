@@ -33,8 +33,8 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec rofi -show drun
-
+bindsym $mod+d exec rofi -show drun &
+bindsym $mod+c exec rofi -show run &
 # change focus
 
 bindsym $mod+h focus left
@@ -110,7 +110,10 @@ bindsym $mod+Shift+0 move container to workspace 10
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart  
+bindsym $mod+Shift+r restart 
+
+# restart everything else
+bindsym $mod+Shift+f exec "killall polybar && polybar topbar && killall nm-applet && nm-applet &"
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
@@ -155,15 +158,21 @@ set_from_resource $color6 i3wm.color6 #000000
 set_from_resource $color7 i3wm.color7 #000000
 set_from_resource $color8 i3wm.color8 #000000
 set_from_resource $color9 i3wm.color9 #000000
+set_from_resource $color10 i3wm.color10 #000000
+set_from_resource $color11 i3wm.color11 #000000
+set_from_resource $color12 i3wm.color12 #000000
+set_from_resource $color13 i3wm.color13 #000000
+set_from_resource $color14 i3wm.color14 #000000
+set_from_resource $color15 i3wm.color15 #000000
 
-# class                 border  bground text    indicator
-client.focused          $color5 $color5 $color7 $color8  
-client.focused_inactive $color2 $color2 $color7
-client.unfocused        $color2 $color2 $color7
-client.urgent           $color4 $color4 $color7
+# class                 border  bground text     indicator
+client.focused          $color15 $color15 $color0 $color8  
+client.focused_inactive $color8 $color8 $color15
+client.unfocused        $color8 $color8 $color15
+client.urgent           $color4 $color4 $color15
 
 title_align center
-default_border pixel 3
+default_border pixel 1
 gaps inner 13
 # gaps outer 5
 
@@ -175,7 +184,7 @@ exec --no-startup-id xautolock '/usr/bin/i3lock' -time 6 & # automatic screen lo
 exec --no-startup-id nm-applet # allow for network management in systray
 
 exec --no-startup-id nitrogen --restore & # load wallpaper
- exec export QT_QPA_PLATFORMTHEME=gtk2 # set qt theme
+exec export QT_QPA_PLATFORMTHEME=gtk2 # set qt theme
 exec compton & # load desktop compositor
 # exec xfce4-power-manager &
 
@@ -188,9 +197,12 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #i
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute
 
+# mute mic
+# bindsym XF86AudioMicMute exec 'pactl set-source-mute 1 toggle'
+
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec brightlight -i 70 # increase screen brightness
-bindsym XF86MonBrightnessDown exec brightlight -d 70 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightlight -i 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightlight -d 20 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -199,14 +211,13 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # APPLICATION LAUNCH BINDINGS
-bindsym $mod+Ctrl+f exec pcmanfm &
-bindsym $mod+Ctrl+w exec firefox &
+# bindsym $mod+c exec firefox &
 bindsym Print --release exec "scrot /tmp/scrotshot.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot.png"
 bindsym Shift+Print exec "scrot /home/$USER/Pictures/screenshot-$(date +%F_%T).png"
 bindsym $mod+Shift+s --release exec "scrot -s /tmp/scrotshot-SELECT.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot-SELECT.png"
 
 # LOCK BINDING 
-bindsym $mod+Delete exec i3lock && systemctl suspend
+bindsym $mod+Delete exec "/home/$USER/.local/bin/betterlockscreen --suspend blur &"
 
 # INPUT SETTINGS
-exec synclient VertScrollDelta=-150
+exec synclient VertScrollDelta=-300 RightButtonAreaLeft=0 RightButtonAreaTop=0
