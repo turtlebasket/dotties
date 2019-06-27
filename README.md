@@ -4,6 +4,10 @@ This is a repository for my personal tilng dev environments that I'd like to kee
 
 Flexible
 --------
+<img src="CSchemeDemo1.png" width=800/>  
+
+Supports dynamic theming via wal/wpg, too!  
+
 <img src="DynamicDemo1.png" width=800/>
 <img src="DynamicDemo2.png" width=800/>
 
