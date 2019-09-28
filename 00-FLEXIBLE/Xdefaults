@@ -1,8 +1,13 @@
-URxvt.font: xft:monospace:size=10
-# URxvt.font: xft:profont:size=10
-URxvt.letterSpace: -1
+# xft:Terminus:size=12,
+
+URxvt.font: xft:Noto\ Mono\ for\ Powerline:size=9.5,xft:monospace:size=9.6,NotoColorEmoji:pixelsize=9
+URxvt.letterSpace: 0
 URxvt.scrollBar: false
 URxvt.internalBorder: 22
+
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
 URxvt.keysym.Control-Up:     \033[1;5A
 URxvt.keysym.Control-Down:   \033[1;5B
 URxvt.keysym.Control-Left:   \033[1;5D

@@ -5,12 +5,13 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 
-# font pango:boxxy 10
+# font pango:terminus 10
 font pango:monospace 9
+# font pango:9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+# font pango:Cantarell-Regular 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -23,7 +24,7 @@ font pango:monospace 9
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt # DEFAULT TERMINAL
+bindsym $mod+Return exec urxvt256c-ml # DEFAULT TERMINAL
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -35,7 +36,9 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+d exec rofi -show drun &
 bindsym $mod+c exec rofi -show run &
+
 # change focus
+focus_follows_mouse no
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -143,6 +146,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# THEMING
+# $WPG_WP=trackpoint_wp.jpg
+# exec wpg -s $WPG_WP
+exec wpg -s trackpoint_wp.jpg
+# exec --no-startup-id nitrogen --restore & # load wallpaper
+
 # bar
 exec --no-startup-id polybar topbar &
 
@@ -172,8 +181,8 @@ client.unfocused        $color8 $color8 $color15
 client.urgent           $color4 $color4 $color15
 
 title_align center
-default_border pixel 1
-gaps inner 13
+default_border pixel 2
+gaps inner 10
 # gaps outer 5
 
 smart_gaps on
@@ -183,9 +192,9 @@ exec --no-startup-id xautolock '/usr/bin/i3lock' -time 6 & # automatic screen lo
 
 exec --no-startup-id nm-applet # allow for network management in systray
 
-exec --no-startup-id nitrogen --restore & # load wallpaper
 exec export QT_QPA_PLATFORMTHEME=gtk2 # set qt theme
-exec compton & # load desktop compositor
+# exec compton -c & # load desktop compositor
+exec compton &
 # exec xfce4-power-manager &
 
 #--- DEVICE-SPECIFIC SETTINGS
@@ -213,11 +222,12 @@ bindsym XF86AudioPrev exec playerctl previous
 # APPLICATION LAUNCH BINDINGS
 # bindsym $mod+c exec firefox &
 bindsym Print --release exec "scrot /tmp/scrotshot.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot.png"
-bindsym Shift+Print exec "scrot /home/$USER/Pictures/screenshot-$(date +%F_%T).png"
-bindsym $mod+Shift+s --release exec "scrot -s /tmp/scrotshot-SELECT.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot-SELECT.png"
+bindsym Ctrl+Print exec "scrot /home/$USER/Pictures/screenshot-$(date +%F_%T).png"
+bindsym Shift+Print --release exec "scrot -s /tmp/scrotshot-SELECT.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot-SELECT.png"
 
 # LOCK BINDING 
-bindsym $mod+Delete exec "/home/$USER/.local/bin/betterlockscreen --suspend blur &"
+# bindsym $mod+Delete exec "/home/$USER/.local/bin/betterlockscreen --suspend blur &"
+bindsym $mod+Delete exec "i3lock -f -i $HOME/Pictures/Wallpapers/ && systemctl suspend"
 
 # INPUT SETTINGS
-exec synclient VertScrollDelta=-300 RightButtonAreaLeft=0 RightButtonAreaTop=0
+exec synclient VertScrollDelta=-30 RightButtonAreaLeft=0 RightButtonAreaTop=0

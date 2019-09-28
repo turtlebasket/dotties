@@ -45,6 +45,7 @@ module-margin-left = 2
 module-margin-right = 1
 
 font-0 = "Mono:pixelsize=9;1"
+;font-0 = "Terminus:pixelsize=12;1"
 ;font-0 = "boxxy:pixelsize=9;1"
 font-1 = "Siji:style=Regular:pixelsize=12;0"
 font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=10;1" 
@@ -108,18 +109,18 @@ type = internal/bspwm
 label-focused = %index%
 ;label-focused-background = ${colors.foreground-alt}
 label-focused-underline= ${colors.background}
-label-focused-padding = 3
+label-focused-padding = 2
 
 label-occupied = %index%
-label-occupied-padding = 3
+label-occupied-padding = 2
 
 label-urgent = %index%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 3
+label-urgent-padding = 2
 
 label-empty = %index%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 3
+label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
@@ -135,17 +136,17 @@ label-mode-foreground = ${colors.background-alt}
 labe-mode-background = #ffffff
 
 ; focused = Active workspace on focused monitor
-;label-focused = %index%
-label-focused = ●
+label-focused = %index%
+;label-focused = ●
 label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background}
+label-focused-background = ${colors.background-alt}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 ;label-focused-padding = ${module/bspwm.label-focused-padding}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-;label-unfocused = %index%
-label-unfocused = ○
+label-unfocused = %index%
+;label-unfocused = ○
 ;label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 label-unfocused-padding = 2
 label-unfocused-foreground = ${colors.foreground}

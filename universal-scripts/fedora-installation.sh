@@ -1,9 +1,9 @@
 # grab me some repos
-sudo dnf copr enable gregw/i3desktop 
-sudo dnf copr enable mhartgring/polybar
+sudo dnf copr enable nforro/i3desktop 
+sudo dnf copr enable fcomida/polybar
 
 # grab me some essential packages
-sudo dnf install i3-gaps polybar rofi playerctl lxappearance compton nitrogen network-manager-applet urvxt scrot xclip
+sudo dnf install i3-gaps polybar rofi playerctl lxappearance compton network-manager-applet urvxt scrot xclip
 
 # make some config directories
 mkdir ~/.config/polybar ~/.config/i3
