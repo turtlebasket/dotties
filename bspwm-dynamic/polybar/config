@@ -12,10 +12,10 @@
 
 [colors]
 background = ${xrdb:color0}
-background-alt=${xrdb:color4}
+background-alt=${xrdb:color5}
 ; 5 or 2 for bg
 foreground = ${xrdb:color15}
-foreground-alt = ${xrdb:color3}
+foreground-alt = ${xrdb:color4}
 alert = ${xrdb:color5}
 bar-empty=${xrdb:color3}
 
@@ -49,14 +49,13 @@ font-0 = "Mono:pixelsize=9;1"
 font-1 = "Siji:style=Regular:pixelsize=12;0"
 font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=10;1" 
 
-modules-left = bspwm
-modules-center = spotify
-;music player goes in center
-modules-right = volume memory battery battery2 date  
+modules-left = volume
+modules-center = bspwm
+modules-right = memory battery battery2 date  
 
 tray-position = right 
 tray-padding = 1  
-tray-transparent = false
+tray-transparent = true
 tray-background = ${colors.background}
 
 wm-restack = bspwm
@@ -102,7 +101,7 @@ mount-0 = /
 label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
-
+  
 [module/bspwm]
 type = internal/bspwm
 ;label-focused = %index%
@@ -111,10 +110,9 @@ label-focused-background = ${colors.foreground-alt}
 ;label-focused-underline= ${colors.background}
 label-focused-padding = 1
 
-label-occupied = ○
+label-occupied = ●
 label-occupied-padding = 1
 
-;label-urgent = %index%!
 label-urgent = !
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 1
@@ -279,7 +277,7 @@ label = %date% %time%
 type = internal/volume
 
 format-volume = <label-volume> <bar-volume>
-label-volume = VOL
+label-volume = 
 label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
@@ -301,7 +299,7 @@ bar-volume-fill = —
 bar-volume-fill-font = 2
 bar-volume-empty = —
 bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.bar-empty}
+bar-volume-empty-foreground = ${colors.foreground-alt}
 
 [module/battery]
 type = internal/battery
@@ -341,7 +339,7 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+;format-underline = #f50a4d
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
@@ -353,59 +351,30 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = 
-label-close =  cancel
-label-close-foreground = 
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
-[module/menu-apps]
-type=custom/menu
-expand-right = true
-
-menu-0-0 = Firefox
-menu-0-0-exec = firefox &
-menu-0-1 = Chromium
-menu-0-1-exec = chromium &
-
 [settings]
 screenchange-reload = true
+;format-background= ${xrdb:color4}
 ;compositing-background = xor
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+;margin-top = 5
+;margin-bottom = 5
 
 ; vim:ft=dosini
 
 ; Custom modules
+
+[module/player-simple]
+
+type = custom/script
+exec = ~/opt/polybar-scripts/player-mpris-simple.sh
+interval = 3
+click-left = playerctl previous
+click-right = playerctl next
+click-middle = playerctl play-pause
 
 [module/spotify]
 type = custom/script

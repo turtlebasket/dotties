@@ -17,17 +17,17 @@ super + r
 
 # lock command
 super + Delete
-	i3lock-fancy ; systemctl suspend
+	i3lock-fancy -t "Locked"; systemctl suspend
 
 # screenshotting commands
 @Print
-	scrot /tmp/scrotshot.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot.png
+	maim --noopengl | xclip -selection clipboard -t image/png
 
 ctrl + @Print
-	scrot /home/$USER/Pictures/screenshot-$(date +%F_%T).png
+	maim /home/$USER/Pictures/screenshot-$(date +%F_%T).png
 
 shift + @Print
-	scrot -s /tmp/scrotshot-SELECT.png -e 'xclip -selection c -t image/png < $f' && rm /tmp/scrotshot-SELECT.png
+	maim --noopengl -s | xclip -selection clipboard -t image/png
 	
 
 # make sxhkd reload its configuration files:
