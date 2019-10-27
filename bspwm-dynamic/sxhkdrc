@@ -1,11 +1,10 @@
-#
-# wm independent hotkeys
-#
+##########################
+# wm independent hotkeys #
+##########################
 
 # terminal emulator
 super + Return
 	urxvt256c-ml
-# urxvt
 
 # program launcher
 super + d
@@ -17,26 +16,28 @@ super + r
 
 # lock command
 super + Delete
-	i3lock-fancy -t "Locked"; systemctl suspend
+	i3lock-fancy -g -f Liberation-Mono -t "Locked"; systemctl suspend
 
-# screenshotting commands
+###########################
+# screenshotting commands #
+###########################
 @Print
-	maim --noopengl | xclip -selection clipboard -t image/png
+	maim -u --noopengl | xclip -selection clipboard -t image/png
 
 ctrl + @Print
-	maim /home/$USER/Pictures/screenshot-$(date +%F_%T).png
+	maim -u /home/$USER/Pictures/screenshot-$(date +%F_%T).png
 
 shift + @Print
-	maim --noopengl -s | xclip -selection clipboard -t image/png
+	maim --noopengl -u -s | xclip -selection clipboard -t image/png
 	
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
-#
-# bspwm hotkeys
-#
+#################
+# bspwm hotkeys # 
+#################
 
 # quit/restart bspwm
 super + alt + {q,r}
@@ -58,21 +59,21 @@ super + y
 super + g
 	bspc node -s biggest
 
-#
-# state/flags
-#
+###############
+# state/flags #
+###############
 
 # set the window state
 super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+	bspc node -t '~{tiled,pseudo_tiled,floating,fullscreen}'
 
 # set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-#
-# focus/swap
-#
+##############
+# focus/swap #
+##############
 
 # focus the node in the given direction
 super + {_,shift + }{h,j,k,l}
@@ -104,9 +105,9 @@ super + {o,i}
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
-#
-# preselect
-#
+#############
+# preselect #
+#############
 
 # preselect the direction
 super + ctrl + {h,j,k,l}
@@ -124,9 +125,9 @@ super + ctrl + space
 super + ctrl + shift + space
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
-#
-# move/resize
-#
+###############
+# move/resize #
+###############
 
 # expand a window by moving one of its side outward
 super + shift + {h,j,k,l}
@@ -140,17 +141,20 @@ super + ctrl + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-## Media keys
+super + {_,shift + }e
+	bspc node @/ -R {90,270}
+
+# Media keys
 XF86AudioRaiseVolume
-	pactl set-sink-volume 0 +5%
+	amixer set Master 5%+ ; amixer set Master unmute
 
 XF86AudioLowerVolume
-	pactl set-sink-volume 0 -5%
+	amixer set Master 5%- ; amixer set Master unmute
 
 XF86AudioMute
 	amixer -q set Master toggle
 
-#Brightness control
+# Brightness control
 XF86MonBrightnessDown
 	brightlight -d 30
 
