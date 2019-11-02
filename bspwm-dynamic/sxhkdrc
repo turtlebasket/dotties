@@ -16,7 +16,7 @@ super + r
 
 # lock command
 super + Delete
-	i3lock-fancy -g -f Liberation-Mono -t "Locked"; systemctl suspend
+	systemctl suspend
 
 ###########################
 # screenshotting commands #

@@ -1,0 +1,19 @@
+# -- usage -- 
+# 1. place in /etc/systemd/system/ 
+# 2. systemctl enable <name-of-service>@user
+
+
+[Unit]
+Description=User suspend actions
+Before=sleep.target
+
+[Service]
+User=%I
+Type=forking
+Environment=DISPLAY=:0
+ExecStartPre=
+ExecStart=/usr/bin/i3lock-fancy
+ExecStartPost=/usr/bin/sleep 0.2
+
+[Install]
+WantedBy=sleep.target
