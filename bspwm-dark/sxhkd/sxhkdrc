@@ -4,7 +4,9 @@
 
 # terminal emulator
 super + Return
-	urxvt256c-ml
+	kitty
+# urxvt
+# urxvt256c-ml
 
 # program launcher
 super + d
