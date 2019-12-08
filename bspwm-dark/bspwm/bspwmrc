@@ -1,0 +1,33 @@
+#!/usr/bin/sh
+
+# autostart
+
+sxhkd &
+dunst &
+
+# bsp prefs
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap          10
+
+bspc config split_ratio          0.5
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config paddingless_monocle  true
+
+# window rules
+
+bspc rule -a mplayer2 state=floating
+bspc rule -a feh state=floating
+bspc rule -a sun-awt-X11-XFramePeer.jetbrains-studio state=tiled
+
+# startup
+
+exec nitrogen --restore &
+exec --no-startup-id nm-applet &
+exec compton --backend glx &
+
+# laptop-specific startup
+exec synclient VertScrollDelta=-75 RightButtonAreaLeft=0 RightButtonAreaTop=0 &
