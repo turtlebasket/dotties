@@ -2,7 +2,7 @@
 
 # autostart
 
-sxhkd &
+dbus-launch sxhkd &
 dunst &
 
 # bsp prefs
