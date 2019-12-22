@@ -9,12 +9,8 @@ super + Return
 # urxvt256c-ml
 
 # program launcher
-super + d
-	rofi -show drun
-
-# command launcher
-super + r
-	rofi -show run
+super + {r, d, x}
+	rofi -show {run, drun, window}
 
 # lock command
 super + Delete
@@ -104,8 +100,12 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+super + {_,shift + , shift+ctrl +}{1-9,0}
+	bspc {desktop -f,node -d,desktop -s} '^{1-9,10}'
+
+# swap desktops
+# super + {_,shift + ctrl +}{1-9,0}
+# bspc {desktop -
 
 #############
 # preselect #
@@ -155,6 +155,15 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	amixer -q set Master toggle
+
+XF86AudioPlay
+	playerctl play-pause 
+
+XF86AudioPrev
+	playerctl previous
+
+XF86AudioNext
+	playerctl next
 
 # Brightness control
 XF86MonBrightnessDown
