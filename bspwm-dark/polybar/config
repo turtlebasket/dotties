@@ -48,8 +48,8 @@ font-1 = "Siji:style=Regular:pixelsize=12;1"
 ;font-2 = "Mono:pixelsize=9;1"
 ;font-2 = "FontAwesome:style=Regular:antialias=false:pixelsize=10;1" 
 
-modules-left = spotify volume
-modules-center = bspwm
+modules-left = bspwm volume
+modules-center = spotify
 modules-right = cpu memory wlan battery battery2 date  
 
 tray-position = right 
@@ -340,4 +340,4 @@ interval = 1
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format = <label>
-exec = python /home/$(whoami)/.spotify_status.py -t 15 -f '{artist}: {song}'
+exec = python2 /home/$(whoami)/.spotify_status.py -t 15 -f '{artist}: {song}'
