@@ -27,14 +27,13 @@ ctrl + @Print
 
 shift + @Print
 	maim --noopengl -u -s | xclip -selection clipboard -t image/png
-	
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 #################
-# bspwm hotkeys # 
+# bspwm hotkeys #
 #################
 
 # quit/restart bspwm
@@ -143,7 +142,10 @@ super + ctrl + shift + {h,j,k,l}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Node rotations
 super + {_,shift + }e
+	bspc node @parent -R {90,270}
+super + ctrl + {_,shift + }e
 	bspc node @/ -R {90,270}
 
 # Media keys
@@ -174,4 +176,4 @@ XF86MonBrightnessUp
 
 # reload polybar
 super + shift + f
-	killall polybar && polybar topbar
+	killall polybar && polybar topbar && polybar topbarjr
