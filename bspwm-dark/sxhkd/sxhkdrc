@@ -10,7 +10,7 @@ super + Return
 
 # program launcher
 super + {r, d, x}
-	rofi -show {run, drun, window}
+	rofi -show {run, drun, windowcd -modi windowcd\,window}
 
 # lock command
 super + Delete
@@ -150,13 +150,16 @@ super + ctrl + {_,shift + }e
 
 # Media keys
 XF86AudioRaiseVolume
-	amixer set Master 5%+ ; amixer set Master unmute
+	amixer -q set Master 5%+ ; amixer set Master unmute
 
 XF86AudioLowerVolume
-	amixer set Master 5%- ; amixer set Master unmute
+	amixer -q set Master 5%- ; amixer set Master unmute
 
 XF86AudioMute
 	amixer -q set Master toggle
+
+XF86AudioMicMute
+	amixer -q  set Capture toggle
 
 XF86AudioPlay
 	playerctl play-pause 
